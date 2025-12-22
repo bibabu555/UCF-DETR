@@ -1,0 +1,52 @@
+task: detection
+
+evaluator:
+  type: CocoEvaluator
+  iou_types: ['bbox', ]
+
+# num_classes: 365
+# remap_mscoco_category: False
+
+num_classes: 5
+remap_mscoco_category: False
+
+# num_classes: 80
+# remap_mscoco_category: True
+
+
+train_dataloader: 
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    # img_folder: /root/dataset/UDD/UDD/images/train
+    # ann_file: /root/dataset/UDD/UDD/annotations/instances_train.json
+    img_folder: /root/dataset/DUO_COCO/train/images
+    ann_file: /root/dataset/DUO_COCO/train/annotation/instances_train.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~
+  shuffle: True
+  num_workers: 4
+  drop_last: True 
+  collate_fn:
+    type: BatchImageCollateFuncion
+
+
+val_dataloader:
+  type: DataLoader
+  dataset: 
+    type: CocoDetection
+    # img_folder: /root/dataset/UDD/UDD/images/test
+    # ann_file: /root/dataset/UDD/UDD/annotations/instances_test.json
+    img_folder: /root/dataset/DUO_COCO/valid/images
+    ann_file: /root/dataset/DUO_COCO/valid/annotation/instances_test.json
+    return_masks: False
+    transforms:
+      type: Compose
+      ops: ~ 
+  shuffle: False
+  num_workers: 4
+  drop_last: False
+  collate_fn:
+    type: BatchImageCollateFuncion
