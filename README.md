@@ -17,7 +17,7 @@
 ![Feature](dataset/fig6.png)
 
 ### Complex Scenarios
-![Feature](dataset/fig8.png)
+![Feature](dataset/fig8_cor.png)
 
 ## Install
 The code is built on [RT-DETR](https://github.com/lyuwenyu/RT-DETR.git)
